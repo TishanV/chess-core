@@ -1,4 +1,10 @@
-import { BoardPosition, BoardState, PromotionPiece } from "./types";
+import {
+  BoardPosition,
+  BoardState,
+  PromotionPiece,
+  Moves,
+  Board,
+} from "./types";
 import { sameColorPos } from "./core/utils";
 import { fenToBoardState } from "./core/boardState";
 import { doMove } from "./core/moveable";
@@ -45,23 +51,23 @@ export class Chess {
     this._current = i;
   }
 
-  public get currentState() {
+  public get currentState(): BoardState {
     return this._states[this._current];
   }
 
-  public get lastState() {
+  public get lastState(): BoardState {
     return this._states[this._states.length - 1];
   }
 
-  public get board() {
+  public get board(): Board {
     return this._states[this._current].board;
   }
 
-  public get moves() {
+  public get moves(): Moves {
     return this._states[this._current].moves;
   }
 
-  public claimDraw() {
+  public claimDraw(): ChessResult {
     return (this._result = ChessResult.CLAIMED_DRAW);
   }
 

@@ -1,8 +1,6 @@
-import { Board, BoardPosition, Player } from "../types";
+import { Board, BoardPosition, Player, Pins } from "../types";
 import { getAttackMap, attackersOn } from "./attack";
 import { assertPiece, assertSquare, betweenLine } from "./utils";
-
-type Pins = { [key: BoardPosition]: BoardPosition[] };
 
 export function pinOnLine(
   line: BoardPosition[],
