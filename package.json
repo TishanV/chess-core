@@ -1,8 +1,9 @@
 {
-  "name": "chess-core",
+  "name": "chess-core-lite",
   "version": "1.0.0",
   "description": "Frontend library for building chess apps",
   "main": "lib/index.js",
+  "type": "module",
   "scripts": {
     "build": "tsc && cp src/types.d.ts lib/types.d.ts && node compiler.js",
     "clean": "rm -rf lib",
@@ -12,7 +13,7 @@
     "type": "git",
     "url": "https://github.com/TishanV/chess-core"
   },
-  "author": "",
+  "author": "tiscodes",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^27.4.0",

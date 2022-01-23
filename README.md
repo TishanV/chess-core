@@ -10,7 +10,7 @@ A lightweight chess library for frontend chess apps.
 
 ## Installation
 ```
-    npm install chess-core
+    npm install chess-core-lite
 ```
 
 ## Getting Started
