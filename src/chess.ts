@@ -40,7 +40,9 @@ export class Chess {
   }
 
   public goto(i: number) {
-    return i < this._states.length && (this._current = i);
+    if (i < 0) i = this._states.length + i;
+    if (i < 0 || i >= this._states.length) return;
+    this._current = i;
   }
 
   public get currentState() {
