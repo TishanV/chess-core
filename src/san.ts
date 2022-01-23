@@ -1,4 +1,4 @@
-import { BoardPosition, BoardState, MoveCords } from "./types";
+import { BoardPosition, BoardState, MoveCords, PromotionPiece } from "./types";
 import {
   firstNum,
   lastNum,
@@ -43,6 +43,11 @@ export function toCordsFromSAN(
     if (from) return [from, to];
   }
 }
+
+export const promotionOf = (san: string): PromotionPiece => {
+  const promP = san.split("=")[1]?.slice(0, 1) as PromotionPiece;
+  return ("QRBN".includes(promP) && promP) || "Q";
+};
 
 export const sourceOf = (origin: BoardPosition, others: BoardPosition[]) => {
   const inOtherFiles = others

@@ -2,7 +2,7 @@ import { BoardPosition, BoardState, PromotionPiece } from "./types";
 import { sameColorPos } from "./core/utils";
 import { fenToBoardState } from "./core/boardState";
 import { doMove } from "./core/moveable";
-import { toCordsFromSAN, toSANMove } from "./san";
+import { promotionOf, toCordsFromSAN, toSANMove } from "./san";
 
 export enum ChessResult {
   GAME_ON = 0,
@@ -63,15 +63,21 @@ export class Chess {
     return (this._result = ChessResult.CLAIMED_DRAW);
   }
 
-  public pushSAN(san: string) {
+  public load(score: string[], fen = defaultFEN) {
+    this.reset();
+    this._states = [fenToBoardState(fen)];
+    return score.every((san) => this.moveSAN(san));
+  }
+
+  public moveSAN(san: string) {
     const cords = toCordsFromSAN(san, this.currentState);
-    return cords ? this.move(...cords) : false;
+    return cords ? this.move(...cords, promotionOf(san)) : false;
   }
 
   public move(
     from: BoardPosition,
     to: BoardPosition,
-    promotion: PromotionPiece = "Queen"
+    promotion: PromotionPiece = "Q"
   ) {
     if (this._result !== ChessResult.GAME_ON) return false;
     const newState = doMove(this._states[this._current], [from, to], promotion);
@@ -95,6 +101,13 @@ export class Chess {
         this._score.pop() &&
         (this._current = this._states.length - 1)
       : null;
+  }
+
+  public reset() {
+    this._states.length = 1;
+    this._score.length = 1;
+    this._current = 0;
+    this._result = ChessResult.GAME_ON;
   }
 
   public get isCheck() {

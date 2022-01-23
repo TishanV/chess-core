@@ -10,13 +10,13 @@ export type Pins = { [key: number]: any[] };
 
 export type Side = "K" | "k" | "Q" | "q";
 
-export type PromotionPiece = "Queen" | "Rook" | "Bishop" | "Knight";
+export type PromotionPiece = "Q" | "R" | "B" | "N";
 
 export type PGNObject = {
-  Event: string;
-  White: string;
-  Black: string;
-  Date: string;
+  Event?: string;
+  White?: string;
+  Black?: string;
+  Date?: string;
   score: [];
 };
 

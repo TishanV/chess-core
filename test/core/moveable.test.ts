@@ -79,7 +79,7 @@ describe("pawnCheck: check for pawn special moves", () => {
       "***********-----bnr//pp-ppppp//--------//--------//----P---//--------//PPPP-PPP//RNBQ--K-";
     const expectedBoard =
       "***********-----bnr//pp-ppppp//--------//--------//----P---//--------//PPPP-PPP//RNBQ--K-";
-    expect(pawnCheck(board, "w", 0, "Queen", [75, 55])).toEqual([
+    expect(pawnCheck(board, "w", 0, "Q", [75, 55])).toEqual([
       expectedBoard,
       65,
     ]);
@@ -89,7 +89,7 @@ describe("pawnCheck: check for pawn special moves", () => {
       "***********-----bnr//pp-ppppp//--------//--------//----P---//----p---//PPPP-PPP//RNBQ--K-";
     const expectedBoard =
       "***********-----bnr//pp-ppppp//--------//--------//--------//----p---//PPPP-PPP//RNBQ--K-";
-    expect(pawnCheck(board, "b", 65, "Queen", [54, 65])).toEqual([
+    expect(pawnCheck(board, "b", 65, "Q", [54, 65])).toEqual([
       expectedBoard,
       0,
     ]);
@@ -99,10 +99,7 @@ describe("pawnCheck: check for pawn special moves", () => {
       "***********-----bnr//pp-ppppp//--------//--------//--------//--------//PPPP-PP-//RNBQ--Kp";
     const expectedBoard =
       "***********-----bnr//pp-ppppp//--------//--------//--------//--------//PPPP-PP-//RNBQ--Kq";
-    expect(pawnCheck(board, "b", 0, "Queen", [78, 88])).toEqual([
-      expectedBoard,
-      0,
-    ]);
+    expect(pawnCheck(board, "b", 0, "Q", [78, 88])).toEqual([expectedBoard, 0]);
   });
 });
 

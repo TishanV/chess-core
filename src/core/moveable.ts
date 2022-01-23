@@ -85,9 +85,7 @@ export const castleCheck = (
 };
 
 const promotionPiece = (promotion: PromotionPiece, player: Player) =>
-  player === "w"
-    ? promotion.substring(0, 1)
-    : promotion.substring(0, 1).toLowerCase();
+  player === "w" ? promotion : promotion.toLowerCase();
 
 export const pawnCheck = (
   board: Board,
@@ -124,7 +122,7 @@ export const fullMoveCheck = (fullMove: number, player: Player): number =>
 export const doMove = (
   state: BoardState,
   cords: MoveCords,
-  promotion: PromotionPiece = "Queen"
+  promotion: PromotionPiece = "Q"
 ): BoardState | undefined => {
   if (state.moves[cords[0]].includes(cords[1])) {
     let newBoard: Board, newCastle: string, newEnpassant: BoardPosition;

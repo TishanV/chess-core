@@ -15,7 +15,7 @@ const allCords = (state: BoardState): MoveCords[] => {
 const simulateMove = (state: BoardState, cords: MoveCords) =>
   assertPiece.isPawn(state.board[cords[0]]) &&
   isPromotionRank(cords[1], state.player)
-    ? ["Queen", "Rook", "Bishop", "Knight"].map((e) => ({
+    ? ["Q", "R", "B", "N"].map((e) => ({
         cords,
         state: doMove(state, cords, e as PromotionPiece),
       }))
