@@ -44,7 +44,7 @@ const getMetas = (word: string) =>
 
 const getScore = (word: string) =>
   word
-    .replace(/\n/g, "")
+    .replace(/\n/g, " ")
     .replace(/\[.+\]|{.+}|[{}]|[0-9]+\./g, "")
     .split(" ")
     .filter((e) => e && !["1-0", "0-1", "1/2-1/2"].includes(e));
