@@ -1,4 +1,4 @@
-const fs = require("fs");
+import { readFileSync, writeFileSync } from "fs";
 
 const jsFiles = [
   "./lib/core/utils.js",
@@ -38,16 +38,14 @@ function combine(files, outFile) {
   try {
     const combined = files
       .map((file, i) =>
-        fs
-          .readFileSync(file, "utf-8")
-          .replace(
-            i === files.length - 1 ? /import.+/g : /import.+|export /g,
-            ""
-          )
+        readFileSync(file, "utf-8").replace(
+          i === files.length - 1 ? /import.+/g : /import.+|export /g,
+          ""
+        )
       )
       .join("\n")
       .replace(/\n+/g, "\n");
-    fs.writeFileSync(outFile, combined);
+    writeFileSync(outFile, combined);
     console.log("Compiled to " + outFile);
   } catch (err) {
     console.log(err);
