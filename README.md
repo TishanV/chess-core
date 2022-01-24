@@ -1,4 +1,4 @@
-# Chess Core Lite v1.0.2
+# Chess Core Lite v1.0.3
 A lightweight chess library for frontend chess apps.
 ## Features
 - Complete chess gameplay support
