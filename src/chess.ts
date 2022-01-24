@@ -9,6 +9,7 @@ import { sameColorPos } from "./core/utils";
 import { fenToBoardState } from "./core/boardState";
 import { doMove } from "./core/moveable";
 import { promotionOf, toCordsFromSAN, toSANMove } from "./san";
+import { validateFEN } from "fen";
 
 export enum ChessResult {
   GAME_ON = 0,
@@ -31,6 +32,7 @@ export class Chess {
   private _result: ChessResult;
 
   constructor(fen: string = defaultFEN) {
+    if (fen !== defaultFEN) fen = validateFEN(fen) ? fen : defaultFEN;
     this._states = [fenToBoardState(fen)];
     this._current = 0;
     this._score = ["-"];

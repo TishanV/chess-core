@@ -1,4 +1,4 @@
-# Chess Core v1.0.0
+# Chess Core Lite v1.0.2
 A lightweight chess library for frontend chess apps.
 ## Features
 - Complete chess gameplay support
@@ -6,7 +6,7 @@ A lightweight chess library for frontend chess apps.
 - Checkmate move finder
 - PGN support
 - FEN support
-- Lightweight module (<30 kB)
+- Lightweight module
 
 ## Installation
 ```
@@ -16,7 +16,9 @@ A lightweight chess library for frontend chess apps.
 ## Getting Started
 
 ```javascript
-    import {Chess, ChessResult, toFEN, toPGN, newPGNObject, findMate} from 'chess-core';
+    import {
+        Chess, ChessResult,findMate,
+        toFEN, toPGN, fromPGN, newPGNObject, } from 'chess-core-lite';
     
     // New game with default fen
     const game = new Chess(); 
@@ -57,6 +59,10 @@ A lightweight chess library for frontend chess apps.
     const pgnObject['Event'] = 'Bob v Marley';
     const pgnObject['Date'] = '10-01-21';
     const pgn = toPGN(pgnObject);
+
+    // Load PGN
+    const pgnObjects = fromPGN('[Event "BvS"]\n1. e4 e5 2. Nc3 Nf6');
+    game.load(pgnObjects[0].score);
 
     // Find Checkmate move
     const mates = findMate(game.currentState);
