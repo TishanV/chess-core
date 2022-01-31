@@ -1,6 +1,21 @@
-# Chess Core Lite v1.0.3
+# Chess Core Lite
 A lightweight chess library for frontend chess apps.
-## Features
+
+# Installation
+```
+    npm install chess-core-lite
+```
+
+# v1.1.0 (31 Jan 2022)
+
+## New features
+- __listVulnerables__: list piece positions being attacked by opponent.
+- __listCaptures__: list piece postitions where opponent pieces are in capture.
+
+## Changes
+-  Module system changed to common js from es6 to support node projects.
+
+# Features
 - Complete chess gameplay support
 - Scoreboard (List of moves made)
 - Checkmate move finder
@@ -8,12 +23,8 @@ A lightweight chess library for frontend chess apps.
 - FEN support
 - Lightweight module
 
-## Installation
-```
-    npm install chess-core-lite
-```
 
-## Getting Started
+# Getting Started
 
 ```javascript
     import {

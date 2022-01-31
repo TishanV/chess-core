@@ -1,4 +1,4 @@
-import { BoardState, MoveCords, PromotionPiece } from "types";
+import { BoardState, MoveCords, PromotionPiece } from "./types";
 import { doMove } from "./core/moveable";
 import { assertPiece, isPromotionRank } from "./core/utils";
 

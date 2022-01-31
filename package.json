@@ -3,9 +3,9 @@
   "version": "1.0.3",
   "description": "Frontend library for building chess apps",
   "main": "lib/index.js",
-  "type": "module",
   "scripts": {
-    "build": "tsc && cp src/types.d.ts lib/types.d.ts && node compiler.js",
+    "build": "tsc && cp src/types.d.ts lib/types.d.ts && node compiler.js && npm run clean-lib",
+    "clean-lib": "cd lib && ls -r | grep -v 'index.js' | grep -v 'index.d.ts' | xargs rm -rf",
     "clean": "rm -rf lib",
     "test": "jest --watchAll"
   },

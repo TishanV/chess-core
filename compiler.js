@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from "fs";
+const fs = require("fs");
 
 const jsFiles = [
   "./lib/core/utils.js",
@@ -8,6 +8,7 @@ const jsFiles = [
   "./lib/core/boardState.js",
   "./lib/core/moveable.js",
   "./lib/san.js",
+  "./lib/attackable.js",
   "./lib/mateFinder.js",
   "./lib/chess.js",
   "./lib/fen.js",
@@ -24,6 +25,7 @@ const dtsFiles = [
   "./lib/core/boardState.d.ts",
   "./lib/core/moveable.d.ts",
   "./lib/san.d.ts",
+  "./lib/attackable.d.ts",
   "./lib/mateFinder.d.ts",
   "./lib/chess.d.ts",
   "./lib/fen.d.ts",
@@ -34,23 +36,55 @@ const dtsFiles = [
 const jsOut = "./lib/index.js";
 const dtsOut = "./lib/index.d.ts";
 
-function combine(files, outFile) {
+function combineES6(files, outFile) {
   try {
     const combined = files
       .map((file, i) =>
-        readFileSync(file, "utf-8").replace(
-          i === files.length - 1 ? /import.+/g : /import.+|export /g,
-          ""
-        )
+        fs
+          .readFileSync(file, "utf-8")
+          .replace(
+            i === files.length - 1 ? /import.+/g : /import.+|export /g,
+            ""
+          )
       )
       .join("\n")
       .replace(/\n+/g, "\n");
-    writeFileSync(outFile, combined);
+    fs.writeFileSync(outFile, combined);
     console.log("Compiled to " + outFile);
   } catch (err) {
     console.log(err);
   }
 }
 
-combine(jsFiles, jsOut);
-combine(dtsFiles, dtsOut);
+function combineCJS(files, outFile) {
+  try {
+    const combined = files
+      .map((file, i) => {
+        const code = fs.readFileSync(file, "utf-8");
+        const imports = code
+          .match(/const .+ = require\(.+\)/g)
+          ?.map((e) => e.split(" ")[1]);
+        const stripCode = code
+          .replace(
+            i === files.length - 1
+              ? /(.*(require\(.+\)).*)/g
+              : /"use strict";|Object.defineProperty.+|(.*(require\(.+\)).*)|exports\..+ = [^{].+|[^\n]{0}exports\./g,
+            ""
+          )
+          .replace(i !== files.length - 1 ? /exports\./g : /const /g, "const ");
+        return (
+          imports?.reduce((a, e) => a.replaceAll(e + ".", ""), stripCode) ||
+          stripCode
+        );
+      })
+      .join("\n")
+      .replace(/\n+/g, "\n");
+    fs.writeFileSync(outFile, combined);
+    console.log("Compiled to " + outFile);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+combineCJS(jsFiles, jsOut);
+combineES6(dtsFiles, dtsOut);
