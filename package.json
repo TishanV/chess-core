@@ -1,6 +1,6 @@
 {
   "name": "chess-core-lite",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Frontend library for building chess apps",
   "main": "lib/index.js",
   "scripts": {
@@ -24,5 +24,11 @@
   "files": [
     "lib/**/*"
   ],
-  "keywords": ["chess", "chess-core", "lite", "frontend", "chess engine"] 
+  "keywords": [
+    "chess",
+    "chess-core",
+    "lite",
+    "frontend",
+    "chess engine"
+  ]
 }
