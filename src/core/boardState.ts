@@ -41,7 +41,7 @@ export const toBoardState = (fenObj: FENState): BoardState => {
     pins,
     attackMap
   );
-  return { ...fenObj, checkline, moves };
+  return { ...fenObj, attackMap, checkline, moves };
 };
 
 export const fenToBoardState = (fen: string): BoardState =>

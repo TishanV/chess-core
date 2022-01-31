@@ -9,7 +9,7 @@ import { sameColorPos } from "./core/utils";
 import { fenToBoardState } from "./core/boardState";
 import { doMove } from "./core/moveable";
 import { promotionOf, toCordsFromSAN, toSANMove } from "./san";
-import { validateFEN } from "fen";
+import { validateFEN } from "./fen";
 
 export enum ChessResult {
   GAME_ON = 0,

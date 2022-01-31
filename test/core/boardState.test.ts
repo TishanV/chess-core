@@ -61,6 +61,7 @@ test("fenToStateBoard", () => {
     enpassant,
     halfMove,
     fullMove,
+    attackMap: [],
     checkline,
     moves,
   };
@@ -69,5 +70,5 @@ test("fenToStateBoard", () => {
   );
   for (let c of state.checkline) c.sort();
   for (let p in state.moves) state.moves[p].sort();
-  expect(state).toEqual(expectedState);
+  expect({ ...state, attackMap: [] }).toEqual(expectedState);
 });

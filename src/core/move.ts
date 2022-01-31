@@ -1,5 +1,13 @@
-import { Board, BoardPosition, Player, Moves, Pins, Side } from "../types";
-import { opponentAttackersOn, AttackMap } from "./attack";
+import {
+  Board,
+  BoardPosition,
+  Player,
+  Moves,
+  Pins,
+  Side,
+  AttackMap,
+} from "../types";
+import { opponentAttackersOn } from "./attack";
 import { firstNum, assertPiece, assertSquare } from "./utils";
 
 const regularMove = (

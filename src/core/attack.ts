@@ -1,4 +1,4 @@
-import { Board, BoardPosition, Player } from "../types";
+import { Board, BoardPosition, Player, AttackMap } from "../types";
 import {
   assertPiece,
   assertSquare,
@@ -7,8 +7,6 @@ import {
   withinBoard,
   filterBoard,
 } from "./utils";
-
-export type AttackMap = { [key: BoardPosition]: BoardPosition[] };
 
 export function positionAdd(
   pos: BoardPosition,

@@ -1,3 +1,4 @@
+export type AttackMap = { [key: BoardPosition]: BoardPosition[] };
 export type Board = string;
 export type Player = "w" | "b";
 export type BoardPosition = number;
@@ -30,6 +31,7 @@ export interface FENState {
 }
 
 export interface BoardState extends FENState {
+  readonly attackMap: AttackMap;
   readonly checkline: BoardPosition[][];
   readonly moves: Moves;
 }

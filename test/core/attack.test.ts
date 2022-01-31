@@ -1,6 +1,5 @@
 import {
   getAttackMap,
-  AttackMap,
   positionAdd,
   positionAddTillEncounter,
   getKingAttacks,
@@ -11,6 +10,7 @@ import {
   getPawnAttacks,
   attackersOn,
 } from "../../src/core/attack";
+import { AttackMap } from "../../src/types";
 
 import { assertPiece, assertSquare, filterBoard } from "../../src/core/utils";
 
