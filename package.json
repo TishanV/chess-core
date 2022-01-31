@@ -23,5 +23,6 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "keywords": ["chess", "chess-core", "lite", "frontend", "chess engine"] 
 }
