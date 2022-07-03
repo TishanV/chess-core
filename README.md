@@ -6,14 +6,10 @@ A lightweight chess library for frontend chess apps.
     npm install chess-core-lite
 ```
 
-# v1.1.0 (31 Jan 2022)
-
-## New features
-- __listVulnerables__: list piece positions being attacked by opponent.
-- __listCaptures__: list piece postitions where opponent pieces are in capture.
+# v1.1.1 (3 Jul 2022)
 
 ## Changes
--  Module system changed to common js from es6 to support node projects.
+- Bug fix: assertPiece and assertSquare not defined
 
 # Features
 - Complete chess gameplay support

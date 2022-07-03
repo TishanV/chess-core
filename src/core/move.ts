@@ -26,7 +26,7 @@ const isBehindCheckline = (
   checkline.some(
     (line) =>
       "qQrRbB".includes(board[line[0]]) &&
-      pos - kingPos === kingPos - (line.at(-1) || 0)
+      pos - kingPos === kingPos - (line.slice(-1)[0] || 0)
   );
 
 const kingMove = (

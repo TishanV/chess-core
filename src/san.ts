@@ -27,13 +27,13 @@ export function toCordsFromSAN(
   if (positions?.length) {
     let from: BoardPosition = 0;
     const to = mapPos(positions![0]);
-    const pieceSelector = san.match(/[KQRBN]/g)?.at(0) || "P";
+    const pieceSelector = san.match(/[KQRBN]/g)?.slice(0, 1)[0] || "P";
     const piecePositions = filterBoard(
       state.board,
       (p) => pieceSelector === p.toUpperCase()
     ).filter((from) => state.moves[from]?.includes(to));
     if (piecePositions.length > 1) {
-      const source = san.match(/[abcdefgh12345678]/g)?.at(0);
+      const source = san.match(/[abcdefgh12345678]/g)?.slice(0, 1)[0];
       const filtered = piecePositions.filter((pos) =>
         mapSanPos(pos).includes(source || "x")
       );
